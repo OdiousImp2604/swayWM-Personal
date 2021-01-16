@@ -1,0 +1,11 @@
+[output eDP-1]
+image=/home/aryan/Pictures/wallpapers/wallpapers-master/art/digital/christmas_3050_stefan_koidl.jpg
+filter=best
+scaling-mode=fill
+anchor=center
+
+[output HDMI-A-1]
+image=/home/aryan/Pictures/wallpapers/stefan-koidl-chernobylhorrorstory12.jpg
+filter=best
+scaling-mode=fill
+anchor=center

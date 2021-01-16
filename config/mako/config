@@ -1,0 +1,21 @@
+font=JetbrainsMonoNL 11
+
+background-color=#353b49
+text-color=#e5e9f0
+padding=10,10,10,10
+margin=10
+progress-color=over #eceff480
+icon-path=/home/aryan/.icons/01-Tele/Tela-dark
+max-icon-size=90
+
+border-size=4
+border-radius=10
+border-color=#3b4252
+
+width=500
+height=500
+
+default-timeout=5000
+
+[urgency=high]
+ignore-timeout=1
