@@ -1,0 +1,2 @@
+# swayWM-Personal
+Personal Configs
