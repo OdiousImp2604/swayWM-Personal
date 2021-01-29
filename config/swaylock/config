@@ -1,29 +1,52 @@
+# Default look
 clock
-# indicator
+indicator
 # no-unlock-indicator
 # daemonize
 indicator-caps-lock
-timestr=%k:%M
-datestr=%B %d %Y
-image= /home/aryan/Pictures/wallpapers/firewatch.jpg
-# screenshots
+timestr=%a, %B %d
+datestr=%I:%M %p
+image=~/.config/sway/nordic-obsession.png
+grace=2
+
+
+# Effects
 scaling=fill
 effect-scale=1.4
-effect-vignette=0.2:0.5
-effect-blur=4x4
-font=JetBrainsMono 10
+effect-blur=9x9
+effect-vignette=0.8:0.8
+fade-in=0.3
 
 # Ring
-indicator-radius=200
-# line-uses-ring
-line-color=#3b4252
-text-color=#eceff4
-# inside-color=#3d7f8d
-inside-ver-color=#5e81ac
-line-ver-color=#5e81ac
-ring-ver-color=#5e81ac
-ring-color=#4c566a
-key-hl-color=#5e81ac
-separator-color=#5e81ac
-layout-text-color=#eceff4
+indicator-radius=100
+indicator-thickness=5
+line-uses-ring
+line-uses-inside
+inside-color=#5e81ac00
+inside-ver-color=#5e81ac00
+inside-caps-lock-color=#eceff400
+inside-wrong-color=#5e81ac00
+inside-clear-color=#5e81ac00
+ring-ver-color=#5e81ac00
+line-wrong-color=#bf616a
+ring-wrong-color=#bf616a
+bs-hl-color=#bf616a
+ring-clear-color=#ebcb8b
+ring-color=#4c566a00
+key-hl-color=#d08770
+separator-color=#5e81ac00
+layout-text-color=#eceff400
 line-wrong-color=#d08770
+
+
+# Profile image
+#effect-compose=/home/aryan/.config/swaylock/profile.jpg
+
+# Text color
+font-size=20
+font=UbuntuMono
+text-color=#d8dee900
+text-clear-color=#d8dee900
+text-ver-color=#d8dee900
+text-wrong-color=#d8dee900
+text-caps-lock-color=#d8dee900

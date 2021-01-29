@@ -1,285 +1,185 @@
-[{
-  "layer": "top", // Waybar at top layer
-  "position": "bottom", // Waybar position (top|bottom|left|right)		
-  // "height": 30, // Waybar height (to be removed for auto height)
-  // "width": 2560, // Waybar width
-  // Choose the order of the modules
+// Global
 
+{
+	"layer": "top",
+  "position": "top",
   "margin-right": 8,
   "margin-left": 8,
-    "margin-top": 1,
-    "margin-bottom":8,
-  
-  "modules-left": ["custom/launcher", "sway/workspaces","custom/firefox", "custom/libreoffice", "custom/youtube", "custom/dolphin", "custom/kate","custom/store", "custom/spotify",],
-  "modules-center": ["sway/window",],
-  "modules-right": ["custom/arrow1", "pulseaudio",   "custom/arrow2", "custom/weather","custom/arrow3", "cpu","custom/arrow4", "custom/pacman","custom/arrow5", "battery","custom/arrow6", "backlight" ,"custom/arrow10", "tray", "clock", "custom/recorder", "custom/power",  ],
-  // Modules configuration
-  "sway/workspaces": {
-    "disable-scroll": false,
-    "all-outputs": true,
-    "format": "{icon}",
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-    },
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6", 
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10",
-      
-      "focused": "",
-      "urgent": "",
-      "default": ""
-    },
-    "icon-size": 15
-  },
-  "river/tags": {
-    "num-tags": 5
-  },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "sway/window": {
-    "format": "{}",
-    "max-length": 65,
-  },
- "custom/media": {
-    "format": "{icon}{}",
-    "return-type": "json",
-    "format-icons": {
-      "Playing": "   ",
-      "Paused": "   ",
-      "Music": "   "
-    },
-    "max-length":65,
-    "interval": 2,
-    "exec": "fish -c playerstatus",
-    "exec-on-event": "fish -c playerstatus",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "mpc toggle --host 127.0.0.1 --port 6002",
-  },
-  "custom/recorder": {
-    "return-type": "json",
-    "format": "",
-    "interval": 1,
-		"exec-if": "pgrep wf-recorder",
-		"exec": "echo '{\"class\": \"recording\"}'",
-    "on-click": "fish -c recording",
-    "tooltip": false,
-  },
-  "tray": {
-    "spacing": 10,
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-  "clock": {
-    
-    // "timezone": "America/New_York",
-    "format": "{:%I:%M %p}",
-    "format-alt": "{:%A, %B %d}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    // "format-alt": "{:%Y-%m-%d}"
-  },
-  "cpu": {
-    "format": "{usage}  ",
-    "on-click": "alacritty -e ytop",
-    "tooltip": false
-  },
-  "memory": {
-    "format": "{}  "
-  },
- "temperature": {
-    "thermal-zone": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
-    "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}  {icon}",
-    "interval": 60,
-    "format-icons": ["", "", ""]
-  },
-  "backlight": {
-    "interval": 5,
-    "format": "{icon}",
-    "format-alt": "{percent}% {icon}",
-    "format-alt-click": "click-right",
-    "format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
-    "on-scroll-down": "brightnessctl -c backlight set +5%",
-    "on-scroll-up": "brightnessctl -c backlight set 5%-"
-  },
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
-  },
-  "network": {
-    "interface": "wlan0", // (Optional) To force the use of this interface
-    "format-wifi": " connected",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "interval": 60,
-    "on-click-right": "exec /home/aryan/nmcli-rofi/nmcli-rofi"
-  },
-  "pulseaudio": {
-    "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["奄"]
-    },
-    "on-click": "pavucontrol",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-  },
-  "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.sh Royal Tunbridge Wells",
-    "format": "{}",
-    "return-type": "json",
-    "interval": 600
-  },
-  "custom/pacman": {
-    "format": "{}  ",
-    "interval": 3600, // every hour
-    // "restart-interval": 3600,
-    "exec": "checkupdates | wc -l", // # of updates
-    "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "alacritty -e yay; pkill -SIGRTMIN+8 waybar", // update system
-    "signal": 8,
-  },
-  "disk": {
-    "interval": 30,
-    "format": "{free}",
-    "path": "/run/media/aryan/",
-  },
-  "custom/power": {
-    "format": "⏻",
-    "on-click": "exec nwgbar",
-    "tooltip": false
-   },
-  "custom/firefox": {
-    "format": "",
-    "on-click": "exec firefox",
-    "tooltip": false
-  },
-  "custom/libreoffice": {
-    "format": "",
-    "on-click": "exec libreoffice",
-    "tooltip": false
-  },
-  "custom/youtube": {
-    "format": "輸",
-    "on-click": "xdg-open https://www.youtube.com/",
-    "tooltip": false
-  },
-  "custom/dolphin": {
-    "format": "",
-    "on-click": "exec dolphin",
-    "tooltip": false
-  },
-  "custom/kate": {
-    "format": "",
-    "on-click": "exec kate",
-    "tooltip": false
-  },
-  "custom/store": {
-  "format": " ",
-    "on-click": "exec pamac-manager",
-    "tooltip": false
-  },
-  "custom/launcher": {
-    "format":"",
-    "on-click": "exec ~/.config/rofi/launchers/text/launcher.sh",
-    "tooltip": false
-   },
-  
-  "wlr/taskbar": {
-    "format": "{icon}",
-    // "format": "{app_id}",
-    "icon-theme": "Papirus",
-    "icon-size": 15,
-    "on-click": "activate",
-    "markup": true,
-    "max-length": 7,
-    "on-click-right": "minimize",
-    "on-click-middle": "close"
-  },
-      "custom/spotify": {
-        "interval": 1,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh",
-        "exec-if": "pgrep spotify",
-        "escape": true
+	"margin-top": 1,
+
+	// If height property would be not present, it'd be calculated dynamically
+  //   "height": 30,
+
+    	"modules-left": [
+        	"custom/launcher",
+        	"sway/workspaces",
+        	"sway/mode",
+					"custom/cmus"
+	],
+
+	"modules-center": [
+      "sway/window"
+      	],
+
+    	"modules-right": [
+             "network",
+	        "memory",
+	        "cpu",
+	        // "custom/weather",
+	        "pulseaudio",
+	        "battery",
+	        "backlight",
+	        "clock",
+	        "tray",
+	        "custom/power",
+     	],
+
+// Modules
+
+"battery": {
+    	"states": {
+      		// "good": 95,
+      		"warning": 30,
+      		"critical": 15
+	},
+    	"format": "{capacity}% {icon}",
+    	"format-charging": "{capacity}% ",
+    	"format-plugged": "{capacity}% ",
+    	"format-alt": "{time} {icon}",
+    	// "format-good": "", // An empty format will hide the module
+    	// "format-full": "",
+    	"format-icons": ["", "", "", "", ""]
+},
+
+
+"clock": {
+      	"interval": 10,
+      	"format-alt": "  {:%e %b %Y}", // Icon: calendar-alt
+      	"format": "{:%H:%M}",
+      	"tooltip-format": "{:%e %B %Y}"
+},
+
+"cpu": {
+        "interval": 5,
+        "format": "  {usage}% ({load})", // Icon: microchip
+        "states": {
+        "warning": 70,
+        "critical": 90
+        },
+        "on-click": "exec htop",
+},
+
+"custom/keyboard-layout": {
+      	"exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+      	// Interval set only as a fallback, as the value is updated by signal
+      	"interval": 30,
+      	"format": "  {}", // Icon: keyboard
+      	// Signal sent by Sway key binding (~/.config/sway/key-bindings)
+      	"signal": 1, // SIGHUP
+      	"tooltip": false
+    	},
+
+"memory": {
+        "interval": 5,
+        "format": " {}%", // Icon: memory
+        "states": {
+            	"warning": 70,
+            	"critical": 90
+        }
+},
+
+"network": {
+      	"interval": 5,
+        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}"
+},
+
+"sway/mode": {
+     	"format": "{}",
+        "tooltip": false
+},
+
+"sway/window": {
+        "format": "{}",
+        "max-length": 120
+},
+
+"sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": "  {icon}  ",
+         //"format":"{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "6": "",
+             "7": "",
+           }
      },
-  "custom/arrow1": {
-        "format": "",
-        "tooltip": false
-    },
+"pulseaudio": {
+    	"scroll-step": 1, // %, can be a float
+    	"format": "{volume}% {icon}",
+    	"format-bluetooth": "{volume}% {icon}  {format_source}",
+    	"format-bluetooth-muted": " {icon}  {format_source}",
+    	"format-muted": "婢 {format_source}",
+    	"format-source": "{volume}% ",
+    	"format-source-muted": "",
+    	"format-icons": {
+      		"headphone": "",
+      		"hands-free": "וֹ",
+      		"headset": "  ",
+      		"phone": "",
+      		"portable": "",
+      		"car": "",
+      		"default": [""]
+	},
+    	"on-click": "pavucontrol",
+    	"on-scroll-up": "pamixer -ui 2",
+    	"on-scroll-down": "pamixer -ud 2",
+},
 
-    "custom/arrow2": {
-        "format": "",
-        "tooltip": false
-    },
+"custom/weather": {
+    	"exec": "~/.config/waybar/scripts/weather.sh",
+    	"format": "{}",
+    	"return-type": "json",
+    	"interval": 600
+},
 
-    "custom/arrow3": {
-        "format": "",
-        "tooltip": false
-    },
+"tray": {
+       	"icon-size": 18,
+       	"spacing":10,
+ },
 
-    "custom/arrow4": {
-        "format": "",
-        "tooltip": false
-    },
+"backlight": {
+    	"interval": 5,
+    	"format": "{icon} {percent}%",
+    	"format-alt": "{percent}% {icon}",
+    	"format-alt-click": "click-right",
+    	"format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
+    	"on-scroll-down": "brightnessctl -c backlight set +5%",
+    	"on-scroll-up": "brightnessctl -c backlight set 5%-"
+},
 
-    "custom/arrow5": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/arrow6": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/arrow10": {
-        "format": "",
-        "tooltip": false
-   }
-}]
+"custom/power": {
+    	"format":"",
+    	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+    	"tooltip": false,
+},
+"custom/cmus": {
+			 "format": " NOW PLAYING  {}",
+			 //"max-length": 15,
+			 "interval": 10,
+			 "exec": "cmus-remote -C \"format_print '%t - %a'\"", // artist - title
+			 "exec-if": "pgrep cmus",
+			 "on-click": "cmus-remote -u",
+			 "on-click-right": "cmus-remote -n",                         // play next
+		  	"on-click-middle": "cmus-remote -u",
+			 "escape": true                                       //handle markup entities
+	 }
+}

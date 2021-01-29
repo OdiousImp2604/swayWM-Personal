@@ -1,0 +1,23 @@
+# Auth with polkit-gnome:
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Desktop notifications
+exec mako
+
+# Network Applet
+exec nm-applet --indicator
+
+#Night Light
+exec gammastep
+
+# Autotiling
+exec autotiling
+
+# IPC
+exec persway
+
+# Cloud
+exec /home/aryan/Apps/pcloud
+
+# Music
+exec cmus
