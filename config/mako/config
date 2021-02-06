@@ -1,19 +1,18 @@
-font=JetbrainsMonoNL 11
+font=UbuntuMono 12.5
 
-background-color=#353b49
-text-color=#e5e9f0
-padding=10,10,10,10
+background-color=#2f3441
+text-color=#81a1c1
+width=350
+height=112
+padding=15
 margin=10
-progress-color=over #eceff480
-icon-path=/home/aryan/.icons/01-Tele/Tela-dark
-max-icon-size=90
+progress-color= source #4c566a80
+icon-path=/usr/share/icons/Papirus-Dark
+max-icon-size=85
 
-border-size=4
-border-radius=10
-border-color=#3b4252
-
-width=500
-height=500
+border-size=3
+border-radius=8
+border-color=#353B49
 
 default-timeout=5000
 

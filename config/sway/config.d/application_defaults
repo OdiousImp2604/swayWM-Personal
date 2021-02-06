@@ -1,5 +1,5 @@
 # Assign workspaces
-assign [app_id="Alacritty"] 1
+assign [app_id="Alacritty"] 7
 for_window [app_id="Alacritty"] focus
 
 assign [app_id="firefox"] 2
@@ -55,3 +55,8 @@ for_window [app_id="Chromium"] inhibit_idle fullscreen
 
 #eww
 for_window [app_id="eww"] border pixel 1
+
+#avizo
+for_window [app_id="avizo-service"] border pixel default, floating enable, sticky enable
+
+

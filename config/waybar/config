@@ -3,34 +3,33 @@
 {
 	"layer": "top",
   "position": "top",
-  "margin-right": 8,
-  "margin-left": 8,
-	"margin-top": 1,
+  "margin-right": 10,
+  "margin-left": 10,
+	"margin-top": 7,
+	
+	
 
 	// If height property would be not present, it'd be calculated dynamically
-  //   "height": 30,
+ 
 
     	"modules-left": [
-        	"custom/launcher",
-        	"sway/workspaces",
-        	"sway/mode",
-					"custom/cmus"
+         	"sway/workspaces",
+         	
+        	 
 	],
 
 	"modules-center": [
-      "sway/window"
+     "custom/mpd"
       	],
 
     	"modules-right": [
+            "sway/mode",
              "network",
-	        "memory",
-	        "cpu",
-	        // "custom/weather",
-	        "pulseaudio",
-	        "battery",
-	        "backlight",
+             "custom/pacman",
+	    	 "battery",
+	    	 "pulseaudio",
+	    	 "tray",
 	        "clock",
-	        "tray",
 	        "custom/power",
      	],
 
@@ -122,34 +121,38 @@
              "7": "",
            }
      },
-"pulseaudio": {
-    	"scroll-step": 1, // %, can be a float
-    	"format": "{volume}% {icon}",
-    	"format-bluetooth": "{volume}% {icon}  {format_source}",
-    	"format-bluetooth-muted": " {icon}  {format_source}",
-    	"format-muted": "婢 {format_source}",
-    	"format-source": "{volume}% ",
-    	"format-source-muted": "",
-    	"format-icons": {
-      		"headphone": "",
-      		"hands-free": "וֹ",
-      		"headset": "  ",
-      		"phone": "",
-      		"portable": "",
-      		"car": "",
-      		"default": [""]
-	},
+  "pulseaudio": {
+    "scroll-step": 1, // %, can be a float
+    "format": "{icon}",
+    "format-bluetooth": "{volume}% {icon}  {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["","  -","  --","  ---","  ----","  -----","  ------","  -------","  --------","  ---------","  ----------",]
+    },
     	"on-click": "pavucontrol",
     	"on-scroll-up": "pamixer -ui 2",
     	"on-scroll-down": "pamixer -ud 2",
 },
 
-"custom/weather": {
-    	"exec": "~/.config/waybar/scripts/weather.sh",
-    	"format": "{}",
-    	"return-type": "json",
-    	"interval": 600
-},
+    "custom/mpd": {
+        "format": "  ♪ {}",
+        //"max-length": 15,
+        "interval": 10, 
+        "exec": "mpc current", 
+        "exec-if": "pgrep mpd",
+        "on-click": "mpc toggle",
+        "on-click-right": "sonata"
+    },
+
 
 "tray": {
        	"icon-size": 18,
@@ -172,7 +175,7 @@
     	"tooltip": false,
 },
 "custom/cmus": {
-			 "format": " NOW PLAYING  {}",
+			 "format": "  {}",
 			 //"max-length": 15,
 			 "interval": 10,
 			 "exec": "cmus-remote -C \"format_print '%t - %a'\"", // artist - title
@@ -181,5 +184,13 @@
 			 "on-click-right": "cmus-remote -n",                         // play next
 		  	"on-click-middle": "cmus-remote -u",
 			 "escape": true                                       //handle markup entities
-	 }
+	 },
+	     "custom/pacman": {
+        "format": "{}  ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "kitty -e 'pikaur'; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+    }
 }

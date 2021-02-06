@@ -7,8 +7,8 @@ exec mako
 # Network Applet
 exec nm-applet --indicator
 
-#Night Light
-exec gammastep
+# Night Light
+exec wlsunset -l 51.5 -L -0.12 
 
 # Autotiling
 exec autotiling
@@ -20,4 +20,18 @@ exec persway
 exec /home/aryan/Apps/pcloud
 
 # Music
-exec cmus
+exec ncmpcpp
+
+# Bluetooth
+exec blueman-manager
+
+# Avizo
+exec avizo-service
+
+#Cava
+exec alacritty cav
+
+#D-Bus
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
