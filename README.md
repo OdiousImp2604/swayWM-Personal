@@ -13,6 +13,10 @@ Personal Configs
 
            cd swayWM-Personal
 
-           cp -R config/* ~/.config/
+           cp -R .config/* ~/.config/
 
-           chmod -R +x ~/.config/sway/scripts (make scripts executable)
+          chmod -R +x ~/.config/waybar/scripts
+
+          chmod -R +x ~/.config/sway/scripts
+
+          yay -Syu --needed --noconfirm - < packages-repository.txt
