@@ -4,8 +4,11 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Desktop notifications
 exec mako
 
-# Network Applet
+# Applets
 exec nm-applet --indicator
+exec blueman-applet
+exec protonvpn-applet
+exec protonvpn-tray
 
 # Night Light
 exec wlsunset -l 51.5 -L -0.12 
@@ -13,25 +16,25 @@ exec wlsunset -l 51.5 -L -0.12
 # Autotiling
 exec autotiling
 
-# IPC
-exec persway
+# Transparency
+exec python3 ~/.config/sway/scripts/swayfader.py      
 
 # Cloud
 exec /home/aryan/Apps/pcloud
 
-# Music
-exec ncmpcpp
-
-# Bluetooth
-exec blueman-manager
-
 # Avizo
 exec avizo-service
 
-#Cava
-exec alacritty cav
+# Music
+exec cmus
+
+# Tutanota
+exec ~/Apps/tutanota.AppImage
+
 
 #D-Bus
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+

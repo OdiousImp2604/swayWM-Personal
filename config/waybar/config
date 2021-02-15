@@ -1,196 +1,193 @@
-// Global
-
 {
-	"layer": "top",
-  "position": "top",
-  "margin-right": 10,
-  "margin-left": 10,
-	"margin-top": 7,
-	
-	
-
-	// If height property would be not present, it'd be calculated dynamically
- 
-
-    	"modules-left": [
-         	"sway/workspaces",
-         	
-        	 
-	],
-
-	"modules-center": [
-     "custom/mpd"
-      	],
-
-    	"modules-right": [
-            "sway/mode",
-             "network",
-             "custom/pacman",
-	    	 "battery",
-	    	 "pulseaudio",
-	    	 "tray",
-	        "clock",
-	        "custom/power",
-     	],
-
-// Modules
-
-"battery": {
-    	"states": {
-      		// "good": 95,
-      		"warning": 30,
-      		"critical": 15
-	},
-    	"format": "{capacity}% {icon}",
-    	"format-charging": "{capacity}% ",
-    	"format-plugged": "{capacity}% ",
-    	"format-alt": "{time} {icon}",
-    	// "format-good": "", // An empty format will hide the module
-    	// "format-full": "",
-    	"format-icons": ["", "", "", "", ""]
-},
-
-
-"clock": {
-      	"interval": 10,
-      	"format-alt": "  {:%e %b %Y}", // Icon: calendar-alt
-      	"format": "{:%H:%M}",
-      	"tooltip-format": "{:%e %B %Y}"
-},
-
-"cpu": {
-        "interval": 5,
-        "format": "  {usage}% ({load})", // Icon: microchip
-        "states": {
-        "warning": 70,
-        "critical": 90
-        },
-        "on-click": "exec htop",
-},
-
-"custom/keyboard-layout": {
-      	"exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
-      	// Interval set only as a fallback, as the value is updated by signal
-      	"interval": 30,
-      	"format": "  {}", // Icon: keyboard
-      	// Signal sent by Sway key binding (~/.config/sway/key-bindings)
-      	"signal": 1, // SIGHUP
-      	"tooltip": false
-    	},
-
-"memory": {
-        "interval": 5,
-        "format": " {}%", // Icon: memory
-        "states": {
-            	"warning": 70,
-            	"critical": 90
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    //"height": 20, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "margin-bottom":10,
+    "margin-right":10,
+    "margin-left":10,
+    
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/logo",
+        "sway/mode",
+        "pulseaudio#icon",
+        "pulseaudio#sound",
+        "backlight#icon",
+        "backlight#value",
+        "custom/emailicon",
+        "custom/unreademail",
+        "custom/icon-cube",
+        "custom/pacman",
+        "custom/cmus"
+    ],
+    "modules-center": ["sway/workspaces"],
+    "modules-right":  ["custom/covid", "network", "cpu", "battery", "battery#bat2", "clock", "tray","custom/power"],
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
         }
-},
-
-"network": {
-      	"interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
-},
-
-"sway/mode": {
-     	"format": "{}",
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
         "tooltip": false
-},
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight#icon": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": [""],
+        "on-click": "ctl-backlight.waybar.sh down"
+    },
+    "backlight#value": {
+        // "device": "acpi_video1",
+        "format": "{percent}%",
+        "on-scroll-down": "brightnessctl -c backlight set +5%",
+      	"on-scroll-up": "brightnessctl -c backlight set 5%-"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "(No IP) ",
+        "format-disconnected": "",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 20,
+        "signal": 1
+    },
+    "pulseaudio#sound": {
+        "format": "{volume}%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+    },
+    "pulseaudio#icon": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
 
-"sway/window": {
-        "format": "{}",
-        "max-length": 120
-},
+  "custom/logo": {
+        "format": "",
+        "on-click": "wofi -c ~/.config/wofi/config -I"
+  },
 
-"sway/workspaces": {
-         "disable-scroll": true,
-         "disable-markup" : false,
-         "all-outputs": true,
-         "format": "  {icon}  ",
-         //"format":"{icon}",
-         "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
-             "6": "",
-             "7": "",
-           }
+ // "custom/emailicon": {
+ //     "format": ""
+ // },
+
+ // "custom/unreademail": {
+ //     "format": "{}",
+ //     "exec": "cat /tmp/unread-email-count.txt || echo ErrNF",
+ //     "signal": 2,
+ //     "interval": 10,
+ // },
+
+  "custom/icon-cube": {
+      "format": "",
+      "on-click": "kitty -e 'pikaur -Syu'; pkill -SIGRTMIN+8 waybar"
+  },
+
+ "custom/power": {
+      	"format":"",
+      	"on-click": "exec ~/.config/waybarGOOD/scripts/power-menu.sh",
+      	"tooltip": false,
+  },
+  "custom/cmus": {
+  			 "format": "  🎜 {}  ",
+  			 //"max-length": 15,
+  			 "interval": 10,
+  			 "exec": "cmus-remote -C \"format_print '%t - %a'\"", // artist - title
+  			 "exec-if": "pgrep cmus",
+  			 "on-click": "cmus-remote -u",
+  			 "on-click-right": "cmus-remote -n",                         // play next
+  		  	"on-click-middle": "cmus-remote -u",
+  			 "escape": true                                       //handle markup entities
+  	 },
+  	     "custom/pacman": {
+          "format": "{}",
+          "interval": 3600,                     // every hour
+          "exec": "checkupdates | wc -l",       // # of updates
+          "exec-if": "exit 0",                  // always run; consider advanced run conditions
+          "on-click": "kitty -e 'pikaur -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+          "signal": 8
+      },
+       "custom/covid": {
+         "exec": "/home/aryan/covid-checker/covid-checker msoa E07000116",
+         "return-type": "json",
+         "format": "{icon} {}",
+         "format-icons": ["v", "^"]
      },
-  "pulseaudio": {
-    "scroll-step": 1, // %, can be a float
-    "format": "{icon}",
-    "format-bluetooth": "{volume}% {icon}  {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["","  -","  --","  ---","  ----","  -----","  ------","  -------","  --------","  ---------","  ----------",]
-    },
-    	"on-click": "pavucontrol",
-    	"on-scroll-up": "pamixer -ui 2",
-    	"on-scroll-down": "pamixer -ud 2",
-},
-
-    "custom/mpd": {
-        "format": "  ♪ {}",
-        //"max-length": 15,
-        "interval": 10, 
-        "exec": "mpc current", 
-        "exec-if": "pgrep mpd",
-        "on-click": "mpc toggle",
-        "on-click-right": "sonata"
-    },
-
-
-"tray": {
-       	"icon-size": 18,
-       	"spacing":10,
- },
-
-"backlight": {
-    	"interval": 5,
-    	"format": "{icon} {percent}%",
-    	"format-alt": "{percent}% {icon}",
-    	"format-alt-click": "click-right",
-    	"format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
-    	"on-scroll-down": "brightnessctl -c backlight set +5%",
-    	"on-scroll-up": "brightnessctl -c backlight set 5%-"
-},
-
-"custom/power": {
-    	"format":"",
-    	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
-    	"tooltip": false,
-},
-"custom/cmus": {
-			 "format": "  {}",
-			 //"max-length": 15,
-			 "interval": 10,
-			 "exec": "cmus-remote -C \"format_print '%t - %a'\"", // artist - title
-			 "exec-if": "pgrep cmus",
-			 "on-click": "cmus-remote -u",
-			 "on-click-right": "cmus-remote -n",                         // play next
-		  	"on-click-middle": "cmus-remote -u",
-			 "escape": true                                       //handle markup entities
-	 },
-	     "custom/pacman": {
-        "format": "{}  ",
-        "interval": 3600,                     // every hour
-        "exec": "checkupdates | wc -l",       // # of updates
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e 'pikaur'; pkill -SIGRTMIN+8 waybar", // update system
-        "signal": 8
-    }
 }

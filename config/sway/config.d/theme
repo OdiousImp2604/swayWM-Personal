@@ -5,11 +5,12 @@ exec_always ~/.config/sway/scripts/import-gsettings
 gaps inner 10
 gaps outer 10
 
+
 # Hide titlebar on windows:
-default_border pixel 1
+default_border pixel 5
 
 # Default Font
-font pango:Noto Sans Regular 10
+font pango:JetBrainsMonoNL 10
 
 # Thin borders:
 #smart_borders on
@@ -22,11 +23,11 @@ for_window [shell="xdg_shell"] title_format "%title (%app_id)"
 for_window [shell="x_wayland"] title_format "%class - %title"
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.focused          #ffff00 #6272A4 #F8F8F2 #ffff00   #ffff00
+client.focused_inactive #ffffff #464646 #eceff4 #464646   #ffffff
+client.unfocused        #000000 #282A36 #BFBFBF #000000   #000000
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.placeholder      #ffff00 #282A36 #F8F8F2 #282A36   #ffff00
 client.background       #F8F8F2
 
 #
@@ -36,3 +37,12 @@ client.background       #F8F8F2
 bar {
    swaybar_command waybar
 }
+
+#
+# Borders :
+#
+border_images.focused ~/.config/sway/borders/shadows.png
+border_images.focused_inactive ~/.config/sway/borders/shadows.png
+border_images.unfocused ~/.config/sway/borders/shadows.png
+border_images.urgent ~/.config/sway/borders/shadows.png
+

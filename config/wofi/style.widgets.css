@@ -2,7 +2,7 @@
 Arc-Dark Color Scheme
 */
 
-@define-color highlight #5294e2;
+@define-color highlight yellow;
 @define-color base1  #404552;
 @define-color base2  #40455;
 @define-color base3  #4b5160;
@@ -13,21 +13,19 @@ Arc-Dark Color Scheme
 }
 
 #window {
-	  border: 1px solid @highlight;
-    margin: 0px 5px 0px 5px;
 
 }
 
 #inner-box {
-    background-color: @base2;
+    background-color: black;
 
 }
 
 #outer-box {
-  margin: 5px;
-  padding:10px;
-  background-color: @base2;
-	margin-top: -22px;
+  margin: 0px;
+  padding:15px;
+  background-color: black;
+  margin-top: -30px;
 }
 
 #scroll {
@@ -38,17 +36,16 @@ padding: 5px;
 color: white;
 }
 
-#entry:nth-child(even){
-    background-color: @base1;
-}
-
 #entry {
-    background-color: @base3;
+    background-color: black;
 }
 
 #entry:selected {
-    background-color: @highlight;
+    background-color: white;
+    border-radius:0px;
+    
 }
 
 #text:selected {
+color:black;
 }

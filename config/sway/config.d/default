@@ -45,6 +45,9 @@ exec swayidle -w\
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    
+    # Activities
+    bindsym $mod+p exec ~/.config/wofi/window.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -202,5 +205,9 @@ bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 p
 #
 # Screenshots
 #
-    bindsym print exec /usr/share/sway/scripts/grimshot --notify save output
+    bindsym print exec grimshot --notify save output 
     bindsym Shift+print exec ~/.config/sway/scripts/screenshot.sh
+#
+# Launcher
+#
+  bindsym $mod+c exec alacritty -e sway-launcher-desktop
