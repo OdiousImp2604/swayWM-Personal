@@ -1,11 +1,15 @@
-/*
-Arc-Dark Color Scheme
-*/
 
-@define-color highlight yellow;
-@define-color base1  #404552;
-@define-color base2  #40455;
-@define-color base3  #4b5160;
+@define-color back #282a36;
+@define-color line #44475a;
+@define-color fore #f8f8f2;
+@define-color comment #6272a4;
+@define-color cyan #8be9fd;
+@define-color green #50fa7b;
+@define-color orange #ffb86c;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #f1fa8c;
 
 
 *{
@@ -17,14 +21,14 @@ Arc-Dark Color Scheme
 }
 
 #inner-box {
-    background-color: black;
+    background-color:@back;
 
 }
 
 #outer-box {
   margin: 0px;
   padding:15px;
-  background-color: black;
+  background-color:@back;
   margin-top: -30px;
 }
 
@@ -33,19 +37,19 @@ Arc-Dark Color Scheme
 
 #text {
 padding: 5px;
-color: white;
+color: @fore;
 }
 
 #entry {
-    background-color: black;
+    background-color: @back;
 }
 
 #entry:selected {
-    background-color: white;
+    background-color: @purple;
     border-radius:0px;
     
 }
 
 #text:selected {
-color:black;
+color:@back;
 }

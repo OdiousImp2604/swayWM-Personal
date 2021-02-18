@@ -1,3 +1,5 @@
+@import "dracula.css";
+
 * {
   border: none;
   border-radius: 0;
@@ -24,7 +26,7 @@ window#waybar.hidden {
 #workspaces button {
   padding: 0.5rem 0.9rem;
   margin: 0px 0;
-  background: black;
+  background: @back;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -35,16 +37,16 @@ window#waybar.hidden {
 }
 
 #workspaces button.focused {
-  background: yellow;
+  background: @purple;
   color: #2E3440;
 }
 
 #workspaces button.urgent {
-  background-color: yellow;
+  background-color: @red;
 }
 
 #mode {
-  background: #ffff00;
+  background: @line;
   color: #ffa000;
   /* border-bottom: 3px solid #ffffff; */
 }
@@ -71,12 +73,12 @@ window#waybar.hidden {
   padding: 0.5rem 0.9rem;
   color: #ffffff;
   margin: 0px 0;
-  background: black;
+  background: @back;
 }
 
 #clock {
-  background-color: #D8DEE9;
-  color: #282a36;
+  background-color: @line;
+  color: @fore;
 }
 
 #battery {
@@ -119,8 +121,8 @@ label:focus {
 }
 
 #backlight.icon {
-  background: #D8DEE9;
-  color: #2E3440;
+  background: @line;
+  color: @fore;
   font-size:20px;
 }
 
@@ -129,7 +131,7 @@ label:focus {
 }
 
 #network {
-  color: #D8DEE9;
+  color: @purple;
 }
 
 #network.disconnected {
@@ -137,8 +139,8 @@ label:focus {
 }
 
 #pulseaudio.icon {
-  background: #D8DEE9;
-  color: #2E3440;
+  background: @line;
+  color: @fore;
 }
 
 #pulseaudio.muted.icon {
@@ -161,15 +163,15 @@ label:focus {
 }
 
 #custom-logo {
-  background: yellow;
+  background: @purple;
   font-size: 1.15em;
-  color: #282a36;
+  color: @back;
 }
 
 #custom-emailicon,
 #custom-icon-cube {
-  background: #D8DEE9;
-  color: #282a36;
+  background: @line;
+  color: @fore;
 }
 
 #custom-unreademail {
@@ -178,14 +180,13 @@ label:focus {
 }
 #custom-power,
 #network{
-  background: yellow;
+  background: @purple;
   color: #282a36;
 }
 #custom-cmus{
-  background: #D8DEE9;
-  color: #282a36;
+  background: @line;
+  color: @fore;
   padding-top:6px;
-	
 }
 
 

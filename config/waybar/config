@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "margin-bottom":10,
     "margin-right":10,
-    "margin-left":10,
+   "margin-left":10,
     
     // Choose the order of the modules
     "modules-left": [
@@ -141,7 +141,7 @@
 
   "custom/logo": {
         "format": "",
-        "on-click": "wofi -c ~/.config/wofi/config -I"
+        "on-click": "~/.config/waybar/scripts/menu.sh"
   },
 
  // "custom/emailicon": {

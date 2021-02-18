@@ -57,4 +57,5 @@ for_window [app_id="eww"] border pixel 1
 #avizo
 for_window [app_id="avizo-service"] border pixel default, floating enable, sticky enable
 
-
+#launcher
+for_window [app_id="termite"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10

@@ -13,9 +13,14 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
+
 set $menu wofi -c ~/.config/wofi/config -I
 
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
+
+set $run bemenu-run -i -m all -p '' -H 28 --fn 'UbuntuMono 10'
+
+set $activites ~/.config/wofi/window.sh
 
 ### Idle configuration
 exec swayidle -w\
@@ -47,8 +52,14 @@ exec swayidle -w\
     bindsym $mod+d exec $menu
     
     # Activities
-    bindsym $mod+p exec ~/.config/wofi/window.sh
+    bindsym $mod+p exec $activites
 
+    # Run Mode
+    bindsym Alt+Space exec $run
+
+    # Waybar Toggle
+    bindsym Alt+q exec pkill -SIGUSR1 '^waybar$'
+    
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -200,7 +211,7 @@ bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 p
 
 # App shortcuts
 #
-    bindsym $mod+n exec thunar
+    bindsym $mod+n exec nautilus
     bindsym $mod+o exec firefox
 #
 # Screenshots
@@ -210,4 +221,4 @@ bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 p
 #
 # Launcher
 #
-  bindsym $mod+c exec alacritty -e sway-launcher-desktop
+  bindsym $mod+c exec termite -e sway-launcher-desktop
