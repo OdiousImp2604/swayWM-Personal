@@ -1,0 +1,6 @@
+ # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+ exec "wlgreet -l; swaymsg exit"
+ 
+
+ 
+ include /etc/sway/config.d/*

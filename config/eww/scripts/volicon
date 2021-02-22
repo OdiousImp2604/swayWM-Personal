@@ -1,0 +1,12 @@
+#!/bin/bash
+
+icon=""
+isMute=$(amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off)
+
+if [ -z $isMute ]; then
+    icon=""
+else
+    icon=""
+fi
+
+echo $icon

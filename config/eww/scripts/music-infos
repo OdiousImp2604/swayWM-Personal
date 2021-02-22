@@ -1,0 +1,21 @@
+#!/bin/bash
+notStopped=$(mpd | grep "playing\|paused")
+
+if [ -z $notStopped ]; then
+    echo " "
+else
+    case $1 in
+        artist)
+            mpd | head -n 1 | cut -d "-" -f 1
+            ;;
+        song)
+             mpd | head -n 1 | cut -d "-" -f 2- | cut -d " " -f2-
+            ;;
+        time)
+            mpd | grep "playing\|paused" | awk '{print $3}'
+            ;;
+        volume)
+            mpd | grep volume | grep -o '[0-9]\+'
+            ;;
+    esac
+fi

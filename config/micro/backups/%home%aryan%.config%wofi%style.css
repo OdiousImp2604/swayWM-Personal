@@ -1,0 +1,88 @@
+@define-color back #282a36;
+@define-color line #44475a;
+@define-color fore #f8f8f2;
+@define-color comment #6272a4;
+@define-color cyan #8be9fd;
+@define-color green #50fa7b;
+@define-color orange #ffb86c;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #f1fa8c;
+
+
+/*@define-color back #8d705d;
+@define-color line #caa778;
+@define-color fore #eee3cb;
+@define-color comment #594d4b;
+@define-color cyan #4a527a;
+@define-color green #5e7e83;
+@define-color orange #af4b26;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #3d4e57;*/
+
+
+
+#entry {
+border-radius: 5px;
+padding: 5px 2px 5px 2px;
+margin: 0px 4px 0px 4px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#entry:selected {
+background-color:@line;
+padding: 7px;
+border-radius:0px
+}
+ 
+#text:selected {
+color: @purple;
+}
+ 
+#window {
+animation-name: fadeIn;
+animation-duration: 0.4s;
+background-color: transparent;
+font-family: Ubuntu Mono;
+border: solid 5px @orange;
+}
+
+#input {
+border: none;
+background-color: @back;
+border-radius: 5px;
+margin: 4px 4px 8px 4px;
+}
+
+#inner-box {
+color: @back;
+border-radius: 5px;
+/* margin-right: 180px; */
+}
+
+#outer-box {
+background-color:@back;
+border-radius: 0px;
+padding: 20px;
+/*box-shadow: 0px 0px 6px 1px  #0F0F0F;*/
+margin: 5px;
+}
+
+#scroll {
+}
+
+#text {
+color: @fore;
+background-color: transparent;
+} 
+
+#img {
+  background-color: transparent;
+}

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+case $1 in
+    firefox)
+        firefox &
+        eww close main
+        ;;
+    thunar)
+        thunar &
+        eww close main
+        ;;
+    termite)
+        termite &
+        eww close main
+        ;;
+    music)
+        termite -e ncmpcpp -t ncmpcpp &
+        eww close main
+        ;;
+    calendar)
+        termite -e "cal -3" -t calendar --hold &
+        eww close main
+        ;;
+esac

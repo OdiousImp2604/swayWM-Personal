@@ -1,0 +1,24 @@
+#!/bin/bash
+
+isMainOpen=$(eww close main | awk '{print $1}')
+isPlayerOpen=$(eww close player | awk '{print $1}')
+
+case $1 in
+    main)
+        if [ -z $isMainOpen ]; then
+            eww close main
+        else
+            eww open main
+        fi
+        ;;
+    player)
+        if [ -z $isPlayerOpen ]; then
+            eww close player
+        else
+            eww open player
+        fi
+        ;;
+    *)
+        echo "nop"
+        ;;
+esac

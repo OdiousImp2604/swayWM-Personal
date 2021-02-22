@@ -1,0 +1,218 @@
+<eww>
+
+  <definitions>
+
+      <def name="main">
+          <box orientation="h" space-evenly="false">
+
+              <box class="launcher" orientation="v" space-evenly="true" 
+                  halign="center" spacing="10">
+              <button class="icon-firefox" 
+                  onclick="~/.config/eww/scripts/launcher firefox"></button>
+              <button class="icon-thunar" 
+                  onclick="~/.config/eww/scripts/launcher thunar"></button>
+              <button class="icon-term" 
+                  onclick="~/.config/eww/scripts/launcher termite"></button>
+              </box>
+
+              <box orientation="v" space-evenly="false" halign="center">
+                  <label class="label-song" text="{{song}}" limit-width="20"/>
+                  <label class="label-artist" text="{{artist}}" 
+                      limit-width="20"/>
+                  <label class="music-time" text="{{music-time}}"/>
+                  <box class="box-controls" orientation="h" 
+                      space-evenly="false" 
+                      halign="center" spacing="5">
+                    <button class="icon-prev" onclick="mpc prev"></button>
+                    <button class="icon-stop" onclick="mpc stop"></button>
+                    <button class="icon-play" onclick="mpc toggle">
+                            {{toggle}}
+                    </button>
+                    <button class="icon-next" onclick="mpc next"></button>
+                  </box>
+                  <box class="box-music" orientation="h" 
+                      space-evenly="false" spacing="2">
+                      <button class="music-opener" 
+                          onclick="~/.config/eww/scripts/launcher music">
+                          Ouvrir le lecteur
+                      </button>
+                      <button class="gege" 
+                          onclick="/home/bidule/.scripts/gege.sh">
+                          
+                      </button>
+                  </box>
+                  <label class="separator-label" text=" "/>
+                  <box orientation="v" class="boxes" space-evenly="false">
+                      <box orientation="h" space-evenly="false" 
+                          class="slider-music-volume" 
+                          halign="center">
+                          <label class="icon-music-volume" text=""/>
+                          <scale min="0" max="101" value="{{music-volume}}" 
+                              onchange="mpc volume $(printf '%.0f' {})"/>
+                      </box>
+                  </box>
+              </box>
+
+              <box orientation="v" space-evenly="false">
+                <label class="hour-label" halign="center" text="{{hour}}"/>
+                <button class="date-label" 
+                    onclick="~/.config/eww/scripts/launcher calendar">
+                    {{date}}
+                </button>
+                <label class="separator-label" text=" "/>
+                <box orientation="v" class="boxes" space-evenly="false">
+                    <box orientation="h" class="slider-vol" 
+                        space-evenly="false">
+                        <button class="icon-vol" 
+                            onclick="pactl set-sink-mute 0 toggle">
+                            {{volume-icon}}
+                        </button>
+                        <scale min="0" max="101" value="{{volume}}" 
+                            onchange="amixer -D pulse sset Master {}%" 
+                            onscroll="amixer -D pulse sset Master {}%"/>
+                    </box>
+                    <box orientation="h" class="slider-bright" 
+                        space-evenly="false">
+                      <label class="icon-bright" text=""/>
+                      <scale min="0" max="101" value="{{bright}}" 
+                          onchange="brightnessctl s {}%" 
+                          onscroll="brightnessctl s {}%"/>
+                    </box>
+                </box>
+                <label class="separator-label" text=" " width="180px"/>
+                <box orientation="v" class="boxes" space-evenly="false">
+                    <box orientation="h" class="slider-battery" 
+                        space-evenly="false">
+                        <label class="icon-battery" text="{{battery}}"/>
+                        <scale min="0" max="101" active="false" 
+                            value="{{battery-remaining}}"/>
+                    </box>
+                </box>
+              </box>
+
+              <box class="launcher" orientation="v" space-evenly="true" 
+                  halign="center" spacing="10">
+                  <button class="icon-halt" onclick="systemctl poweroff">
+                      
+                  </button>
+                  <button class="icon-reboot" onclick="systemctl reboot">
+                      
+                  </button>
+                  <button class="icon-logout" onclick="bspc quit">
+                      
+                  </button>
+              </box>
+
+          </box>
+      </def>
+
+      <def name="player">
+          <box orientation="v" space-evenly="false" halign="center">
+              <label class="label-song" text="{{song}}" limit-width="20"/>
+              <label class="label-artist" text="{{artist}}" limit-width="20"/>
+
+              <box class="boxes" orientation="h" space-evenly="false" 
+                  halign="center" spacing="8">
+                <button class="icon-prev" onclick="mpc prev"></button>
+                <button class="icon-stop" onclick="mpc stop"></button>
+                <button class="icon-play" onclick="mpc toggle"></button>
+                <button class="icon-next" onclick="mpc next"></button>
+              </box>
+
+              <label class="music-time" text="{{music-time}}"/>
+
+              <box class="box-music" orientation="h" space-evenly="false" 
+                  spacing="2">
+                  <button class="music-opener" 
+                      onclick="termite -e ncmpcpp -t ncmpcpp">
+                      Ouvrir le lecteur
+                  </button>
+                  <button class="gege" 
+                      onclick="/home/bidule/.scripts/gege.sh">
+                      
+                  </button>
+              </box>
+
+              <label class="separator-label" text=" "/>
+
+
+              <box orientation="v" class="boxes" space-evenly="false">
+                  <box orientation="h" space-evenly="false" 
+                      class="slider-music-volume" 
+                      halign="center">
+                      <label class="icon-music-volume" text=""/>
+                      <scale min="0" max="101" value="{{music-volume}}" 
+                          onchange="mpc volume $(printf '%.0f' {})"/>
+                  </box>
+              </box>
+
+          </box>
+      </def>
+  </definitions>
+
+
+
+  <variables>
+    <!-- Date -->
+    <script-var name="date">date "+%A %d %B"</script-var>
+    <script-var name="hour" interval="1m">date "+%H:%M"</script-var>
+
+    <!-- Launcher -->
+    <script-var name="firefox">
+         firefox
+    </script-var>
+    <script-var name="thunar">
+        ~/.config/eww/scripts/launcher thunar
+    </script-var>
+    <script-var name="termite">
+        ~/.config/eww/scripts/launcher termite
+    </script-var>
+    <!-- Sliders -->
+    <script-var name="volume" interval="1ms">
+            ~/.config/eww/scripts/getvol
+    </script-var>
+    <script-var name="volume-icon" interval="1s">
+            ~/.config/eww/scripts/volicon
+    </script-var>
+    <script-var name="bright" interval="1ms">
+            ~/.config/eww/scripts/getbri
+    </script-var>
+    <script-var name="battery" interval="10s">
+            ~/.config/eww/scripts/battery
+    </script-var>
+    <script-var name="battery-remaining" interval="2m">
+            cat /sys/class/power_supply/BAT1/capacity
+    </script-var>
+
+    <!-- Music -->
+    <script-var name="song" interval="1s">
+        ~/.config/eww/scripts/music-infos song
+    </script-var>
+    <script-var name="artist" interval="1s">
+        ~/.config/eww/scripts/music-infos artist
+    </script-var>
+    <script-var name="music-time" interval="1s">
+        ~/.config/eww/scripts/music-infos time
+    </script-var>
+    <script-var name="music-volume">
+        ~/.config/eww/scripts/music-infos volume
+    </script-var>
+    <script-var name="toggle" interval="1s">
+        ~/.config/eww/scripts/toggleIcon
+    </script-var>
+  </variables>
+
+
+  <windows>
+
+      <window name="main">
+          <geometry x="645px" y="788px" width="200px" height="255px"/>
+          <widget>
+              <main/>
+          </widget>
+      </window>
+
+  </windows>
+
+
+</eww>

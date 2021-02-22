@@ -1,0 +1,12 @@
+
+[output eDP-1]
+image=/home/aryan/Pictures/wallpapers/deb.
+filter=best
+scaling-mode=fill
+anchor=center
+
+[output HDMI-A-1]
+image=/home/aryan/Pictures/wallpapers/2.png
+filter=best
+scaling-mode=fill
+anchor=center

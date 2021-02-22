@@ -1,0 +1,12 @@
+#!/bin/bash
+
+icon=""
+isOnline=$(cat /sys/class/power_supply/ADP1/online)
+
+if [ $isOnline == 1 ]; then
+    icon=" "
+else
+    icon=""
+fi
+
+echo $icon

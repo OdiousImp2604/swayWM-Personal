@@ -1,0 +1,13 @@
+#!/bin/bash
+STATE=$(mpc | grep "playing\|paused" | cut -d "[" -f 2 | cut -d "]" -f 1)
+ICON=""
+
+if [ $STATE = "playing" ]; then
+    ICON=""
+elif [ $STATE = "paused" ]; then
+    ICON=""
+elif [ -z $STATE ]; then
+    ICON=""
+fi
+
+echo $ICON

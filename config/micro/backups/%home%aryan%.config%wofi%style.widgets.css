@@ -1,0 +1,68 @@
+
+@define-color back #282a36;
+@define-color line #44475a;
+@define-color fore #f8f8f2;
+@define-color comment #6272a4;
+@define-color cyan #8be9fd;
+@define-color green #50fa7b;
+@define-color orange #ffb86c;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #f1fa8c;
+
+/*@define-color back #8d705d;
+@define-color line #caa778;
+@define-color fore #eee3cb;
+@define-color comment #594d4b;
+@define-color cyan #4a527a;
+@define-color green #5e7e83;
+@define-color orange #af4b26;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #3d4e57;*/
+
+
+
+*{
+    font-family: UbuntuMono;
+}
+
+#window {
+
+}
+
+#inner-box {
+    background-color:@back;
+
+}
+
+#outer-box {
+  margin: 0px;
+  padding:15px;
+  background-color:@back;
+  margin-top: -30px;
+}
+
+#scroll {
+}
+
+#text {
+padding: 5px;
+color: @fore;
+}
+
+#entry {
+    background-color: @back;
+}
+
+#entry:selected {
+    background-color: @line;
+    border-radius:0px;
+ 
+}
+
+#text:selected {
+color: @purple;
+}
