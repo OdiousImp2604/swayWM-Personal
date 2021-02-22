@@ -1,0 +1,270 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+ /*
+Arc-Dark Color Scheme
+*/
+
+@define-color highlight #5294e2 ;
+@define-color base1  #404552 ;
+
+
+
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 1;
+}
+
+/* The whole bar */
+#waybar {
+    background:transparent;
+    color: #bebebe;
+    font-family:UbuntuMono;
+    font-size: 14px;
+    border-radius:15px;
+    
+  }
+
+
+/* Each module */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray
+#custom-cmus
+#custom-pacman{
+    margin-left:10px;
+    margin-right:10px;
+   }
+
+
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+
+
+
+#battery {
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        margin-left:5px;
+        background-color:#3b4252;
+        	padding: 2px 10px 2px 10px;
+	margin: 3px 10px 3px 10px;
+	border-radius: 12px;
+}
+
+#battery.warning {
+        color: orange;
+}
+
+#battery.critical {
+        color: red;
+}
+
+#battery.warning.discharging {
+        animation-name: blink-warning;
+        animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+        animation-name: blink-critical;
+        animation-duration: 2s;
+}
+
+#cpu {
+margin-bottom:3px;
+	
+}
+#cpu.warning {
+        color: orange;
+
+}
+
+#cpu.critical {
+        color: red;
+
+  }
+
+#memory {
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+}
+
+#memory.warning {
+        color: orange;
+        padding-left:2px;
+        padding-right:2px;
+ }
+
+#memory.critical {
+        color: red;
+        animation-name: blink-critical;
+        animation-duration: 2s;
+        padding : 0px 5px 0px 5px;
+        border-radius: 7px;
+}
+
+#mode {
+    background: #5e81ac;
+    border-bottom: 3px transparent;
+    color:white;
+    margin-left: 5px;
+    padding:5px;
+    border-radius:10px;
+  }
+
+#network{
+color:#a3be8c;
+margin-bottom:2px;
+background-color:#3b4252;
+	padding: 2px 10px 2px 10px;
+	margin: 3px 10px 3px 10px;
+	border-radius: 12px;
+	
+}  
+  
+
+#network.disconnected {
+        color: orange;
+}
+
+#pulseaudio{
+color: #d08770;
+
+	
+}
+#pulseaudio.muted {
+    color: @highlight;
+}
+
+#temperature.critical {
+        color: red;
+}
+
+#window {
+        font-weight: normal;
+        font-family: UbuntuMono;
+        color:#81a1c1 ;
+}
+#workspaces {
+    font-family:JetBrainsMono;
+	background-color: #3b4252;
+	padding: 2px 2px 2px 2px;
+	font-size: 15px;
+	border-radius: 12px;
+	margin: 3px 3px 5px 5px;
+}
+#workspaces button {
+	font-size: 14px;
+	border-radius: 10px;
+	margin: 0;
+	background-color: transparent;
+	color: #ffffff;
+}
+
+#workspaces button:hover {
+	box-shadow: inherit;
+	color: #5e81ac;
+}
+#workspaces button.focused,#tags button.occupied {
+	color: #81a1c1;
+}
+#tags button.focused {
+	color: #5e81ac;
+}
+#workspaces button.urgent {
+	color:  #BF616A;
+}
+
+
+#custom-power {
+  color: #bebebe;
+  background-color:#81a1c1 ;
+	font-size: 14px;
+	padding: 2px 10px 2px 10px;
+	margin: 3px 10px 3px 10px;
+	border-radius: 15px;
+}
+#custom-launcher{
+   margin-left:15px;
+   margin-right:15px;
+   font-size:15px;
+}
+#custom-launcher{
+ font-size:20px;
+ }
+ #custom-cmus{
+  font-size:14px;
+  color:#8fbcbb;
+  margin-bottom: 1px;
+  padding: 1px;
+
+}
+#tray{
+margin-bottom:2px;
+ background-color: #3b4252;
+	font-size: 14px;
+	padding: 2px 10px 2px 10px;
+	margin: 3px 10px 3px 10px;
+	border-radius: 15px;
+}
+#custom-pacman{
+	color: #ebcb8b ;
+ 
+	font-size: 14px;
+	padding: 2px 7px 2px 7px;
+	margin: 3px 7px 3px 7px;
+	border-radius: 15px;
+}

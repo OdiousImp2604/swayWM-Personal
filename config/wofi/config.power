@@ -6,3 +6,7 @@ lines=4
 location=top_right
 x=-120
 y=10
+layer=overlay
+insensitive=true
+prompt=
+image_size=0

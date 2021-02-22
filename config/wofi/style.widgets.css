@@ -11,6 +11,19 @@
 @define-color red #ff5555;
 @define-color yellow #f1fa8c;
 
+/*@define-color back #8d705d;
+@define-color line #caa778;
+@define-color fore #eee3cb;
+@define-color comment #594d4b;
+@define-color cyan #4a527a;
+@define-color green #5e7e83;
+@define-color orange #af4b26;
+@define-color pink #ff79c6;
+@define-color purple #bd93f9;
+@define-color red #ff5555;
+@define-color yellow #3d4e57;*/
+
+
 
 *{
     font-family: UbuntuMono;
@@ -45,11 +58,11 @@ color: @fore;
 }
 
 #entry:selected {
-    background-color: @purple;
+    background-color: @line;
     border-radius:0px;
-    
+ 
 }
 
 #text:selected {
-color:@back;
+color: @purple;
 }

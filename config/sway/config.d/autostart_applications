@@ -40,4 +40,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # Dex
 exec dex --wait /etc/xdg/autostart/welcome.desktop  
 
-exec_always --no-startup-id kitti3
+# Wob
+exec mkfifo $SWAYSOCK.wob
+exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '#cc3a3a3a' --bar-color '#ffdcbb8c'
+
