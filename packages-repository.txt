@@ -53,3 +53,5 @@ wlay
 appimagelauncher
 zoom
 wlsunset
+chaotic-keyring 
+chaotic-mirrorlist
