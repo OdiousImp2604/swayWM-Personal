@@ -7,13 +7,13 @@ Personal Configs
  
  3) copy scripts inside ~/.config/sway/scripts must be executable ! [chmod +x] them please ;)
  
- 4) install needed packages
+ 4) install needed packages (my needed packages check before you do this cause you won't need everything I want)
 
-           git clone https://github.com/OdiousImp2604/swayWM-Personal
+          git clone https://github.com/OdiousImp2604/swayWM-Personal
 
-           cd swayWM-Personal
+          cd swayWM-Personal
 
-           cp -R config/* ~/.config/
+          cp -R config/* ~/.config/
 
           chmod -R +x ~/.config/waybar/scripts
 
