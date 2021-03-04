@@ -20,7 +20,7 @@ exec autotiling
 exec python3 ~/.config/sway/scripts/swayfader.py      
 
 # Cloud
-exec /home/aryan/Apps/pcloud
+exec /home/aryan/Applications/pcloud
 
 # Avizo
 exec avizo-service
@@ -29,7 +29,7 @@ exec avizo-service
 exec cmus
 
 # Tutanota
-exec ~/Apps/tutanota.AppImage
+exec ~/Applications/tutanota.AppImage
 
 
 #D-Bus

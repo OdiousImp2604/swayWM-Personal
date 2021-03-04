@@ -157,12 +157,12 @@
 
   "custom/icon-cube": {
       "format": "",
-      "on-click": "kitty -e 'pikaur -Syu'; pkill -SIGRTMIN+8 waybar"
+      "on-click": "kitty -e 'paru'; pkill -SIGRTMIN+8 waybar"
   },
 
  "custom/power": {
       	"format":"",
-      	"on-click": "exec ~/.config/waybarGOOD/scripts/power-menu.sh",
+      	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
       	"tooltip": false,
   },
   "custom/cmus": {
