@@ -13,7 +13,7 @@ Personal Configs
 
            cd swayWM-Personal
 
-           cp -R .config/* ~/.config/
+           cp -R config/* ~/.config/
 
           chmod -R +x ~/.config/waybar/scripts
 
