@@ -1,10 +1,10 @@
 function header -d 'message header can be whatever'
-  set -l block (set_color cyan) 'ʕっ•ᴥ•ʔっ happy new year!'
+  set -l block (set_color cyan) 'Hello Aryan'
   echo -ne $block\n
 end
 
 function footer -d 'message footer can be whatever'
-  set -l block (set_color cyan) 'ʕノ)ᴥ(ヾʔ goodbye'
+  set -l block (set_color cyan) 'We Miss You Aryan'
   echo -ne $block\n
 end
 
